@@ -18,7 +18,7 @@
 
       <div class="flex mr-6 space-x-4">
 
-        <button v-if="auth_user_role == 'ADMIN'"
+        <button v-if="auth_user_role == 'ADMIN'|| !guestRoutes.includes(this.$route.name) "
           class="px-4 py-2 font-bold text-white bg-gray-400 rounded-full hover:bg-gray-600">
           <router-link to="/book">Addbook</router-link>
         </button>
@@ -79,7 +79,7 @@
   <footer class="bottom-0 w-full p-4 text-center text-white bg-gray-500">
     <div class="text-md ">© 2022 <a href="https://flowbite.com/" class=" hover:underline">LOGO™</a>.
       All Rights Reserved.
-    </div>
+ </div>
   </footer>
 </template>
 
@@ -107,11 +107,11 @@ function logOut(){
 let auth_user_role = ref(0);
 auth_user_role = window.localStorage.getItem('auth_user_role')
 let guestRoutes = ref('');
-guestRoutes = ['login', 'sign'];
+guestRoutes = ['login', 'sign','book'];
 
 onMounted(() => {
   const route = useRoute();
-  console.log(route.name)
+ console.log(route.name)
 })
 </script>
 
